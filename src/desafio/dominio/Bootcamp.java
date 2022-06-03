@@ -75,4 +75,5 @@ public class Bootcamp implements Serializable {
     public int hashCode() {
         return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, conteudos);
     }
+
 }

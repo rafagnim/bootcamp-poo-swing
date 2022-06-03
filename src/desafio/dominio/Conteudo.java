@@ -29,9 +29,9 @@ public abstract class Conteudo implements Serializable  {
 
     @Override
     public String toString() {
-        return "Conteudo{" +
+        return " -> Conteudo: [[" +
                 "titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
-                '}';
+                "]]";
     }
 }

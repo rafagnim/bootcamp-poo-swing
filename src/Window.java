@@ -396,6 +396,7 @@ public class Window {
                 JOptionPane.showMessageDialog(null, "Dev cadastrado com sucesso.");
                 itemDevCadastrar.setEnabled(true);
                 removeCadastrarDev(lbl, lblNome, tfNome, btnCadastrar, btnCancelar, lblSpace);
+                Window.habilitaMenu();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -588,7 +589,34 @@ public class Window {
     }
 
     private void consultarBootcamp() {
+        frame.setLayout(new GridLayout(2,1));
+        desabilitaMenu();
 
+        JTextArea jTextArea = new JTextArea("Bootcamps disponíveis:\n\n");
+        jTextArea.setEditable(false);
+
+        JScrollPane scrollPane = new JScrollPane(jTextArea);
+
+        for (Bootcamp b: bootcamps) {
+            jTextArea.append("Nome: " + b.getNome() + "; Descrição: " + b.getDescricao() + ";\n");
+            jTextArea.append(b.getConteudos() + "\n");
+        }
+
+        JButton btnSair = new JButton("Sair");
+
+        frame.add(scrollPane);
+        frame.add(btnSair);
+
+        ActionListener alSair = e -> {
+            frame.remove(scrollPane);
+            frame.remove(btnSair);
+            habilitaMenu();
+            frame.setVisible(false);
+            frame.setVisible(true);
+        };
+        btnSair.addActionListener(alSair);
+
+        frame.setVisible(true);
     }
 
     private void desabilitaMenu() {
